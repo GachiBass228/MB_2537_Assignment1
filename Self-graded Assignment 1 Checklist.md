@@ -1,5 +1,6 @@
 Self-graded Assignment 1 Checklist
-
+Student Name: Mykyta Bozhanov
+Student Set: 2C
     Criteria	
     ========
 [x]  A home page links to signup and login, if not logged in; and links to members and signout, if logged in.
