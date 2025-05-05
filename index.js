@@ -180,7 +180,7 @@ app.post('/submitUser', async (req,res) => {
     req.session.authenticated = true;
     req.session.username = username;
 	req.session.cookie.maxAge = expireTime;
-    res.redirect('/');
+    res.redirect('/membersPage');
 });
 
 app.post('/loggingin', async (req,res) => {
@@ -233,12 +233,12 @@ app.post('/loggingin', async (req,res) => {
 	}
 });
 
-app.get('/loggedin', (req,res) => {
+app.get('/loggedIn', (req,res) => {
     if (!req.session.authenticated) {
         res.redirect('/login');
     }
     else{
-        res.redirect('/');
+        res.redirect('/membersPage');
     }
 });
 
@@ -254,6 +254,7 @@ app.get('/logout', (req, res) => {
 
 app.get('/membersPage', (req,res) => {
 
+    if (req.session.authenticated){
     const images = ["/cat1.jpg", "/cat2.jpg", "/cat3.jpg"];
     const randomIndex = Math.floor(Math.random() * images.length);
     const selectedImage = images[randomIndex];
@@ -266,6 +267,10 @@ app.get('/membersPage', (req,res) => {
         </form>
     `;
     res.send(html);
+    }
+    else{
+        res.redirect('/');
+    }
 });
 
 
